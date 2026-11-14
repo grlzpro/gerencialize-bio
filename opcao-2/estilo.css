@@ -222,7 +222,7 @@ footer::before{content:"";position:absolute;left:0;right:0;top:0;height:200px;ba
 .f-bot .logo{width:10rem;height:2.25rem}
 .f-bot small{font-size:0.75rem;color:var(--mut)}
 
-.wa{position:fixed;right:20px;bottom:20px;z-index:60;width:56px;height:56px;border-radius:50%;background:#E8FB89;color:#0B0E2E;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:background .25s,color .25s,transform .25s}
+.wa{position:fixed;right:20px;bottom:20px;z-index:60;width:56px;height:56px;border-radius:50%;background:#8c8c96;color:#0B0E2E;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:background .25s,color .25s,transform .25s}
 .wa:hover{background:#25D366;color:#fff;transform:translateY(-2px)}
 .wa svg{fill:currentColor}
 
@@ -312,3 +312,26 @@ h1 em,h2 em,h3 em,.about h2 span{font-family:'Playfair Display',Georgia,serif;fo
   .hero-main{padding-top:110px}
   .hero-txt h1{margin-top:22px}
 }
+
+/* Título da capa com ícones em pílula (referência Pinterest) */
+.hero h1.h1-pills{font-weight:500;font-size:clamp(2.2rem,4.2vw,4.1rem);line-height:1.12;letter-spacing:-.035em}
+.h1-pills .ln{display:flex;align-items:center;gap:.22em;white-space:nowrap;opacity:0;transform:translateY(30px);animation:lnUp 1s cubic-bezier(.2,.7,.2,1) forwards}
+.h1-pills .ln:nth-child(1){animation-delay:.15s}
+.h1-pills .ln:nth-child(2){padding-left:1.1em;animation-delay:.32s}
+.h1-pills .ln:nth-child(3){padding-left:.3em;animation-delay:.49s}
+.hero h1.h1-pills em{color:#8c8c96}
+@keyframes lnUp{to{opacity:1;transform:none}}
+.h1-pills .ipill{position:relative;display:inline-grid;place-items:center;width:1.32em;height:.86em;border-radius:.26em;flex:none;
+  background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.01));
+  box-shadow:inset 0 0 0 .025em rgba(159,147,248,.55),0 0 .5em -.1em rgba(124,125,252,.45)}
+.h1-pills .ipill::after{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(circle at 50% 120%,rgba(124,125,252,.35),transparent 60%)}
+.h1-pills .ipill svg{width:.56em;height:.56em;position:relative;z-index:1;stroke:#E6E4FF;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.h1-pills .rot{animation:pillTwist 6s ease-in-out infinite;transform-origin:center;transform-box:fill-box}
+.h1-pills .ipill.b .rot{animation-duration:7.5s;animation-delay:-2s}
+.h1-pills .ipill.c .rot{animation-duration:9s;animation-delay:-4s}
+@keyframes pillTwist{0%{transform:rotate(0) scale(1)}50%{transform:rotate(180deg) scale(.9)}100%{transform:rotate(360deg) scale(1)}}
+@media (max-width:960px){.hero h1.h1-pills{font-size:clamp(2.1rem,10vw,3.8rem)}.h1-pills .ln:nth-child(2){padding-left:.7em}}
+@media (prefers-reduced-motion:reduce){.h1-pills .ln,.h1-pills .rot{animation:none;opacity:1;transform:none}}
+
+.hero-main{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+@media (max-width:960px){.hero-main{grid-template-columns:minmax(0,1fr)}}
