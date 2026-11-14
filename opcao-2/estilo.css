@@ -403,15 +403,15 @@ h1 em,h2 em,h3 em,.about h2 span{font-family:'Playfair Display',Georgia,serif;fo
 @keyframes orbCcw{to{transform:rotate(-360deg)}}
 @media (prefers-reduced-motion:reduce){.h1-pills .orb{animation:none;stroke-dasharray:none}}
 
-/* Chat com borda e brilho animados atrás dele (roxo de um lado, verde-limão do outro) */
+/* Chat com borda e brilho animados atrás dele (roxo de um lado, lilás do outro) */
 @property --chatAng{syntax:'<angle>';initial-value:0deg;inherits:false}
 #chat{border:1.5px solid transparent;
   background:linear-gradient(180deg,#0e1135,#090b26) padding-box,
-             conic-gradient(from var(--chatAng),#7C7DFC,#B9AEFF 14%,rgba(159,147,248,.15) 30%,rgba(198,255,52,.15) 56%,#C6FF34 70%,#7C7DFC 100%) border-box;
-  box-shadow:-60px 10px 120px -10px rgba(124,125,252,.75),60px -10px 120px -10px rgba(198,255,52,.45),0 0 40px -6px rgba(159,147,248,.45);
+             conic-gradient(from var(--chatAng),#5249D6,#7C7DFC 14%,rgba(124,125,252,.15) 30%,rgba(214,200,255,.15) 56%,#D6C8FF 70%,#5249D6 100%) border-box;
+  box-shadow:-60px 10px 120px -10px rgba(98,86,240,.8),60px -10px 120px -10px rgba(214,200,255,.5),0 0 40px -6px rgba(159,147,248,.45);
   animation:chatSpin 8s linear infinite,chatGlow 6s ease-in-out infinite}
 @keyframes chatSpin{to{--chatAng:360deg}}
 @keyframes chatGlow{
-  0%,100%{box-shadow:-60px 10px 120px -10px rgba(124,125,252,.75),60px -10px 120px -10px rgba(198,255,52,.45),0 0 40px -6px rgba(159,147,248,.45)}
-  50%{box-shadow:-60px -10px 120px -10px rgba(198,255,52,.45),60px 10px 120px -10px rgba(124,125,252,.75),0 0 40px -6px rgba(198,255,52,.35)}}
+  0%,100%{box-shadow:-60px 10px 120px -10px rgba(98,86,240,.8),60px -10px 120px -10px rgba(214,200,255,.5),0 0 40px -6px rgba(159,147,248,.45)}
+  50%{box-shadow:-60px -10px 120px -10px rgba(214,200,255,.5),60px 10px 120px -10px rgba(98,86,240,.8),0 0 40px -6px rgba(214,200,255,.35)}}
 @media (prefers-reduced-motion:reduce){#chat{animation:none}}
