@@ -299,3 +299,16 @@ footer::before{content:"";position:absolute;left:0;right:0;top:0;height:200px;ba
 /* Combinação tipográfica: Sequel Sans firme + Playfair itálico no destaque */
 h1,h2{font-weight:600;letter-spacing:-.035em}
 h1 em,h2 em,h3 em,.about h2 span{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;letter-spacing:-.01em}
+
+/* Capa: coluna de texto ocupa exatamente a altura do chat
+   (topo da etiqueta = topo do chat; base dos botões = base do chat) */
+.hero-main{align-items:stretch;margin-top:0;padding-top:clamp(96px,13vh,8.5rem)}
+.hero-txt{display:flex;flex-direction:column;justify-content:space-between}
+.hero-txt .loc{align-self:flex-start}
+.hero-txt h1{margin-top:auto}
+.hero-txt .lead{margin-top:clamp(16px,2.4vh,26px)}
+.hero-txt .ctas{margin-top:clamp(20px,3vh,30px)}
+@media (max-width:960px){
+  .hero-main{padding-top:110px}
+  .hero-txt h1{margin-top:22px}
+}
