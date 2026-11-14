@@ -8,13 +8,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap">
-<link rel="stylesheet" href="opcao-2/estilo.css?v=9">
+<link rel="stylesheet" href="opcao-2/estilo.css?v=16">
 </head>
 <body>
 
 <nav class="bar"><div class="wrap"><div class="bar-in">
   <a href="#" class="logo" aria-label="Gerencialize"></a>
-  <div class="links"><a href="#inicio">Início</a><a href="#sobre">Sobre</a><a href="#servicos">Serviços</a><a href="#processo">Como trabalhamos</a><a href="#contato">Contato</a></div>
+  <div class="links"><a href="#inicio">Início</a><a href="#sobre">Sobre</a><a href="#servicos">Serviços</a><a href="#avaliacoes">Depoimentos</a><a href="#processo">Como trabalhamos</a><a href="#contato">Contato</a></div>
   <a href="WA" class="pill">Fale com especialista</a>
 </div></div></nav>
 
@@ -94,7 +94,7 @@
 
 <section id="servicos"><div class="wrap">
   <div class="svc-head">
-    <div><span class="eyebrow">O que oferecemos</span><h2 style="margin-top:14px">Tudo o que o seu marketing precisa, gerenciado por um só time.</h2></div>
+    <div><span class="eyebrow">O que oferecemos</span><h2 style="margin-top:14px">Tudo o que o seu marketing precisa, <em>gerenciado por um só time.</em></h2></div>
     <a href="WA" class="btn btn-d">Falar com especialista <i>→</i></a>
   </div>
   <div class="svc">
@@ -107,25 +107,36 @@
   </div>
 </div></section>
 
-<section class="testi"><div class="wrap t-grid">
-  <div>
-    <div class="q-mark">“</div>
-    <p class="quote" id="q"></p>
-    <div class="t-foot">
-      <div class="who"><b id="qn"></b><small id="qr"></small></div>
-      <div class="pager"><span><b id="qi">01</b>/03</span><button id="prev" aria-label="Anterior">←</button><button id="next" aria-label="Próximo">→</button></div>
-    </div>
+<section class="testi is-dark" id="avaliacoes"><div class="wrap">
+  <div class="rv-head">
+    <div><span class="eyebrow caps">Avaliações</span><h2>O que nossos <span>clientes</span> dizem</h2></div>
+    <div class="rv-nav"><button type="button" class="rv-btn" id="rvPrev" aria-label="Depoimento anterior">←</button><button type="button" class="rv-btn main" id="rvNext" aria-label="Próximo depoimento">→</button></div>
   </div>
-  <div class="t-side">
-    <span class="eyebrow">O que dizem os clientes</span>
-    <h3 style="margin-top:14px">Confiança construída no trabalho do dia a dia.</h3>
-    <p>Cada projeto é tratado como uma causa própria — do diagnóstico ao acompanhamento.</p>
+  <div class="rv-track" id="rvTrack">
+    <article class="rv-card">
+      <div class="rv-top"><span class="rv-av" aria-hidden="true">MF</span><a class="rv-ig" href="https://instagram.com/MatheusFernandesNutri" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a></div>
+      <div class="rv-q" aria-hidden="true">“</div>
+      <p class="rv-text">A Gerencialize mudou totalmente os meus resultados no trabalho. É incrível como um bom conteúdo, postagens bem elaboradas e um feed organizado podem alavancar a captação de clientes.</p>
+      <div class="rv-who"><b>Matheus Fernandes</b><small>Nutricionista</small><small class="rv-at"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>@MatheusFernandesNutri</small></div>
+    </article>
+    <article class="rv-card">
+      <div class="rv-top"><span class="rv-av" aria-hidden="true">J</span><a class="rv-ig" href="https://instagram.com/MicarlaLimaSemijoias" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a></div>
+      <div class="rv-q" aria-hidden="true">“</div>
+      <p class="rv-text">Conseguimos não apenas atingir, mas superar nossas metas, graças à dedicação e às habilidades excepcionais do time.</p>
+      <div class="rv-who"><b>João</b><small>Micarla Lima Semijoias</small><small class="rv-at"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>@MicarlaLimaSemijoias</small></div>
+    </article>
+    <article class="rv-card">
+      <div class="rv-top"><span class="rv-av" aria-hidden="true">VN</span><a class="rv-ig" href="https://instagram.com/SigaArca" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a></div>
+      <div class="rv-q" aria-hidden="true">“</div>
+      <p class="rv-text">Um time preparado, que assume cada projeto como uma causa própria. Esse time sempre nos surpreende.</p>
+      <div class="rv-who"><b>Victor Nóe</b><small>Arca</small><small class="rv-at"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>@SigaArca</small></div>
+    </article>
   </div>
 </div></section>
 
 <section id="processo"><div class="wrap">
   <div class="svc-head">
-    <div><span class="eyebrow">Como trabalhamos</span><h2 style="margin-top:14px">É assim que vamos te levar a melhores resultados.</h2></div>
+    <div><span class="eyebrow">Como trabalhamos</span><h2 style="margin-top:14px">É assim que vamos te levar a <em>melhores resultados.</em></h2></div>
   </div>
   <div class="proc">
     <div class="step"><span class="n">01</span><div><h3>Contato e diagnóstico</h3><p>Um primeiro contato para identificar as necessidades e as metas do seu negócio.</p></div></div>
@@ -158,6 +169,6 @@
 
 <a class="wa" href="WA" aria-label="WhatsApp"><svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg></a>
 
-<script src="opcao-2/script.js?v=9"></script>
+<script src="opcao-2/script.js?v=15"></script>
 </body>
 </html>

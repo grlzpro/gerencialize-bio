@@ -8,7 +8,7 @@
 (()=>{const bar=document.querySelector('nav.bar');
  const tone=()=>{const r=bar.querySelector('.bar-in').getBoundingClientRect();const y=r.top+r.height/2;
   const under=[...document.querySelectorAll('header.hero,section,footer')].find(el=>{const b=el.getBoundingClientRect();return b.top<=y&&b.bottom>y});
-  bar.classList.toggle('on-light',!!under&&under.tagName==='SECTION')};
+  bar.classList.toggle('on-light',!!under&&under.tagName==='SECTION'&&!under.classList.contains('is-dark'))};
  addEventListener('scroll',tone,{passive:true});addEventListener('resize',tone);tone();})();
 /* Seletor da barra: pílula roxa translúcida que aparece e desliza só com o mouse sobre os links */
 (()=>{const links=document.querySelector('nav.bar .links');if(!links)return;
@@ -21,12 +21,24 @@
  links.addEventListener('mouseleave',()=>{ind.style.opacity=0;on=false});})();
 
 document.querySelectorAll('a[href="WA"]').forEach(a=>{a.href="https://wa.me/5584996764404?text="+encodeURIComponent("Olá! Vim pelo site da Gerencialize e quero falar com um especialista.");a.target="_blank";a.rel="noopener"});
-const T=[
- ["A Gerencialize mudou totalmente os meus resultados no trabalho. É incrível como um bom conteúdo, postagens bem elaboradas e um feed organizado podem alavancar a captação de clientes.","@MatheusFernandesNutri","Cliente Gerencialize"],
- ["Conseguimos não apenas atingir, mas superar nossas metas, graças à dedicação e às habilidades excepcionais do time.","João","@MicarlaLimaSemijoias"],
- ["Um time preparado, que assume cada projeto como uma causa própria. Esse time sempre nos surpreende.","Victor Nóe","@SigaArca"]];
-let i=0;const show=()=>{q.textContent="“"+T[i][0]+"”";qn.textContent=T[i][1];qr.textContent=T[i][2];qi.textContent="0"+(i+1)};
-prev.onclick=()=>{i=(i+2)%3;show()};next.onclick=()=>{i=(i+1)%3;show()};show();
+/* Depoimentos: carrossel centralizado que passa sozinho; o cartão do meio fica em destaque */
+(()=>{const tr=document.getElementById('rvTrack');if(!tr)return;
+ const cards=[...tr.querySelectorAll('.rv-card')],p=document.getElementById('rvPrev'),n=document.getElementById('rvNext');
+ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;let idx=0,timer,raf,visible=false,hover=false;
+ const left=c=>c.offsetLeft-(tr.clientWidth-c.offsetWidth)/2;
+ const go=(i,smooth=true)=>{idx=(i+cards.length)%cards.length;tr.scrollTo({left:left(cards[idx]),behavior:smooth&&!reduce?'smooth':'auto'})};
+ const mark=()=>{const mid=tr.scrollLeft+tr.clientWidth/2;let best=0,bd=Infinity;
+  cards.forEach((c,i)=>{const d=Math.abs(c.offsetLeft+c.offsetWidth/2-mid);if(d<bd){bd=d;best=i}});
+  idx=best;cards.forEach((c,i)=>c.classList.toggle('active',i===best))};
+ const stop=()=>clearInterval(timer);
+ const start=()=>{stop();if(!reduce&&visible&&!hover)timer=setInterval(()=>go(idx+1),4500)};
+ p.onclick=()=>{go(idx-1);start()};n.onclick=()=>{go(idx+1);start()};
+ cards.forEach((c,i)=>c.addEventListener('click',e=>{if(i!==idx&&!e.target.closest('a')){go(i);start()}}));
+ tr.addEventListener('scroll',()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(mark)},{passive:true});
+ tr.addEventListener('mouseenter',()=>{hover=true;stop()});tr.addEventListener('mouseleave',()=>{hover=false;start()});
+ new IntersectionObserver(([e])=>{visible=e.isIntersecting;start()},{threshold:.4}).observe(tr);
+ addEventListener('resize',()=>go(idx,false));
+ go(Math.floor(cards.length/2),false);mark();})();
 
 /* Chat da capa (estilo typebot): faz as perguntas uma a uma e, no final,
    abre o WhatsApp da agência com as respostas. Para mudar as perguntas, edite PASSOS. */
