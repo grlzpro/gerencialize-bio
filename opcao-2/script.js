@@ -1,10 +1,17 @@
-/* Barra de navegação: some ao rolar para baixo, volta com o mouse no topo da tela ou ao rolar para cima */
-(()=>{const bar=document.querySelector('nav.bar');let lastY=scrollY,over=false;
- const set=h=>bar.classList.toggle('hide',h&&!over);
- addEventListener('scroll',()=>{const y=scrollY;if(y<80)set(false);else if(y>lastY+4)set(true);else if(y<lastY-4)set(false);lastY=y},{passive:true});
- addEventListener('mousemove',e=>{const near=e.clientY<90;if(near!==over){over=near;if(over)set(false)}});
- bar.addEventListener('focusin',()=>set(false));})();
-/* Vidro da barra: escuro sobre a capa e o rodapé, claro sobre as seções brancas */
+/* Barra de navegação: sempre visível na capa; nas outras seções fica escondida e só aparece
+   com o mouse no topo da tela (ou com o teclado). Em telas sem mouse, aparece ao rolar para cima. */
+(()=>{const bar=document.querySelector('nav.bar'),hero=document.querySelector('header.hero');
+ const touch=matchMedia('(hover: none)').matches;let over=false,focus=false,up=false,lastY=scrollY;
+ const inHero=()=>!hero||scrollY<hero.offsetHeight*0.5;
+ const upd=()=>bar.classList.toggle('hide',!(inHero()||over||focus||(touch&&up)));
+ addEventListener('scroll',()=>{const y=scrollY;if(touch){if(y<lastY-4)up=true;else if(y>lastY+4)up=false}lastY=y;upd()},{passive:true});
+ addEventListener('mousemove',e=>{const near=e.clientY<Math.max(90,bar.querySelector('.bar-in').getBoundingClientRect().bottom+12);
+  if(near!==over){over=near;upd()}});
+ document.documentElement.addEventListener('mouseleave',()=>{if(over){over=false;upd()}});
+ bar.addEventListener('focusin',e=>{focus=e.target.matches(':focus-visible');upd()});
+ bar.addEventListener('focusout',()=>{focus=false;upd()});
+ upd();})();
+/* Vidro da barra: mais tom quando passa sobre as seções claras, para continuar azul-escuro (e não cinza) */
 (()=>{const bar=document.querySelector('nav.bar');
  const tone=()=>{const r=bar.querySelector('.bar-in').getBoundingClientRect();const y=r.top+r.height/2;
   const under=[...document.querySelectorAll('header.hero,section,footer')].find(el=>{const b=el.getBoundingClientRect();return b.top<=y&&b.bottom>y});
@@ -23,7 +30,7 @@
 document.querySelectorAll('a[href="WA"]').forEach(a=>{a.href="https://wa.me/5584996764404?text="+encodeURIComponent("Olá! Vim pelo site da Gerencialize e quero falar com um especialista.");a.target="_blank";a.rel="noopener"});
 /* Depoimentos: carrossel centralizado que passa sozinho; o cartão do meio fica em destaque */
 (()=>{const tr=document.getElementById('rvTrack');if(!tr)return;
- const cards=[...tr.querySelectorAll('.rv-card')],p=document.getElementById('rvPrev'),n=document.getElementById('rvNext');
+ const cards=[...tr.querySelectorAll('.rv-card')];
  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;let idx=0,timer,raf,visible=false,hover=false;
  const left=c=>c.offsetLeft-(tr.clientWidth-c.offsetWidth)/2;
  const go=(i,smooth=true)=>{idx=(i+cards.length)%cards.length;tr.scrollTo({left:left(cards[idx]),behavior:smooth&&!reduce?'smooth':'auto'})};
@@ -32,7 +39,6 @@ document.querySelectorAll('a[href="WA"]').forEach(a=>{a.href="https://wa.me/5584
   idx=best;cards.forEach((c,i)=>c.classList.toggle('active',i===best))};
  const stop=()=>clearInterval(timer);
  const start=()=>{stop();if(!reduce&&visible&&!hover)timer=setInterval(()=>go(idx+1),4500)};
- p.onclick=()=>{go(idx-1);start()};n.onclick=()=>{go(idx+1);start()};
  cards.forEach((c,i)=>c.addEventListener('click',e=>{if(i!==idx&&!e.target.closest('a')){go(i);start()}}));
  tr.addEventListener('scroll',()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(mark)},{passive:true});
  tr.addEventListener('mouseenter',()=>{hover=true;stop()});tr.addEventListener('mouseleave',()=>{hover=false;start()});
